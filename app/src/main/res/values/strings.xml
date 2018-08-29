@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Subaze</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!--textos para drawer-->
+    <string name="inicio">Inicio</string>
+    <string name="modo_cnline">Activar modo online</string>
+    <string name="mi_cuenta">Mi cuenta</string>
+    <string name="todas_rutas">Todas las rutas</string>
+    <string name="lugares_interes">Lugares de interes</string>
+    <string name="tus_rutas">Tus rutas</string>
+    <string name="buscar_rutas_cercanas">Bucar Rutas Cercanas</string>
+    <string name="nosotros">Nosotros</string>
+    <string name="ayudanos">Ayudanos</string>
+    <string name="legal">Legal</string>
+    <string name="salir">Salir</string>
+</resources>

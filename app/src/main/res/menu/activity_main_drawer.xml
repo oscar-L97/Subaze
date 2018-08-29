@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:title="@string/inicio" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:title="@string/modo_cnline" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:title="@string/mi_cuenta" />
+        <item
+            android:id="@+id/nav_manage"
+            android:title="@string/todas_rutas" />
+        <item
+            android:id="@+id/lugares_interes"
+            android:title="@string/lugares_interes" />
+        <item
+            android:id="@+id/tus_rutas"
+            android:title="@string/tus_rutas" />
+        <item
+            android:id="@+id/rutas_cercanas"
+            android:title="@string/buscar_rutas_cercanas" />
+        <item
+            android:id="@+id/nosotros"
+            android:title="@string/nosotros" />
+        <item
+            android:id="@+id/legal"
+            android:title="@string/legal" />
+        <item
+            android:id="@+id/salir"
+            android:title="@string/salir"/>
+
+    </group>
+
+</menu>
