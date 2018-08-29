@@ -71,17 +71,25 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.inicio) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.modo_online) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.mi_cuenta) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.todas_rutas) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.lugares_interes) {
+
+        } else if (id == R.id.tus_rutas) {
+
+        } else if (id == R.id.rutas_cercanas) {
+
+        } else if (id == R.id.nosotros) {
+
+        } else if (id == R.id.legal) {
+
+        } else if (id == R.id.salir) {
 
         }
 

@@ -5,16 +5,16 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/inicio"
             android:title="@string/inicio" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/modo_online"
             android:title="@string/modo_cnline" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/mi_cuenta"
             android:title="@string/mi_cuenta" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/todas_rutas"
             android:title="@string/todas_rutas" />
         <item
             android:id="@+id/lugares_interes"
