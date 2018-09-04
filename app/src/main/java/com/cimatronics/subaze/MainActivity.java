@@ -86,10 +86,14 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.lugares_interes) {
 
         } else if (id == R.id.tus_rutas) {
+            Intent intent = new Intent(this, tusRutas.class);
+            startActivity(intent);
 
         } else if (id == R.id.rutas_cercanas) {
 
         } else if (id == R.id.nosotros) {
+            Intent intent = new Intent(this, nosotros.class);
+            startActivity(intent);
 
         } else if (id == R.id.legal) {
             Intent intent = new Intent(this, legalPage.class);
