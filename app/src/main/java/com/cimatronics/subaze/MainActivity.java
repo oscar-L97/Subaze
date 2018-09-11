@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +17,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+import com.cimatronics.subaze.Adapter.MyAdapter;
+import com.cimatronics.subaze.Models.TitleChild;
+import com.cimatronics.subaze.Models.TitleCreator;
+import com.cimatronics.subaze.Models.TitleParent;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -22,8 +29,19 @@ import com.google.android.gms.maps.SupportMapFragment;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 import android.transition.TransitionManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
+
+    RecyclerView recyclerView;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        ((MyAdapter)recyclerView.getAdapter()).onSaveInstanceState(outState);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +63,30 @@ public class MainActivity extends AppCompatActivity
                 getSupportFragmentManager()
                         .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        recyclerView = (RecyclerView)findViewById(R.id.myRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        MyAdapter adapter = new MyAdapter(this, initData());
+        adapter.setParentClickableViewAnimationDefaultDuration();
+        adapter.setParentAndIconExpandOnClick(true);
+
+        recyclerView.setAdapter(adapter);
+    }
+
+    private List<ParentObject> initData() {
+        TitleCreator titleCreator = TitleCreator.get(this);
+        List<TitleParent> titles = titleCreator.getAll();
+        List<ParentObject> parentObject = new ArrayList<>();
+
+        for (TitleParent title:titles){
+            List<Object> childList = new ArrayList<>();
+            childList.add(new TitleChild("Add to contacts","Send Message"));
+            title.setChildObjectList(childList);
+            parentObject.add(title);
+        }
+        return parentObject;
+
     }
 
     @Override
@@ -122,4 +164,6 @@ public class MainActivity extends AppCompatActivity
     public void onMapReady(GoogleMap googleMap) {
 
     }
+
+
 }
