@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
@@ -28,6 +30,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 import android.transition.TransitionManager;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +59,24 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        Spinner dropdown = findViewById(R.id.dropdown);
+        String[]  items = new String[]{"Economico","Corta", "Disponible"};
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this , android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter1);
+
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -81,7 +102,7 @@ public class MainActivity extends AppCompatActivity
 
         for (TitleParent title:titles){
             List<Object> childList = new ArrayList<>();
-            childList.add(new TitleChild("Add to contacts","Send Message"));
+            childList.add(new TitleChild("Tipo de transporte","Ubicacion"));
             title.setChildObjectList(childList);
             parentObject.add(title);
         }

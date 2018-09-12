@@ -13,7 +13,7 @@
         <TextView
             android:id="@+id/option1"
             android:padding="8dp"
-            android:text="option 1"
+            android:text="Tipo de transporte"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -21,7 +21,55 @@
             android:layout_below="@id/option1"
             android:id="@+id/option2"
             android:padding="8dp"
-            android:text="option 1"
+            android:text="Ubicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@+id/option2"
+            android:id="@+id/option3"
+            android:padding="8dp"
+            android:text="Horario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@+id/option3"
+            android:id="@+id/option4"
+            android:padding="8dp"
+            android:text="Tarifas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@+id/option4"
+            android:id="@+id/option5"
+            android:padding="8dp"
+            android:text="Distancia y Tiempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@+id/option5"
+            android:id="@+id/option6"
+            android:padding="8dp"
+            android:text="Lugares de interes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@+id/option6"
+            android:id="@+id/option7"
+            android:padding="8dp"
+            android:text="Calles y avenidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@+id/option7"
+            android:id="@+id/option8"
+            android:padding="8dp"
+            android:text="Sugerencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
