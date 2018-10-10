@@ -252,6 +252,7 @@ public class MainActivity extends AppCompatActivity
                     listPoints.clear();
                     mMap.clear();
                 }
+
                 listPoints.add(latLng);
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.position(latLng);
@@ -281,7 +282,7 @@ public class MainActivity extends AppCompatActivity
         String mode = "mode=driving";
         String param = str_org+"&"+st_dest+"&"+sensor+"&"+mode;
         String output = "json";
-        String url = "https://googleapis.com/maps/api/directions/"+output+"?"+param;
+        String url = "https://maps.googleapis.com/maps/api/directions/"+output+"?"+param;
         return url;
     }
 
