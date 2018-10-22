@@ -126,10 +126,19 @@
 
             </LinearLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/myRecyclerView"
+            <Button
+                android:id="@+id/ruta1"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_width="match_parent" />
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:onClick="sendMessage"
+                android:text="ruta1" />
+
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/myRecyclerView"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_width="match_parent" />-->
 
 
         </LinearLayout>

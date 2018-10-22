@@ -85,12 +85,14 @@ public class MainActivity extends AppCompatActivity
     private Marker currentUserLocationMarker;
     private static final int Request_User_Location_Code = 99;
     ArrayList<LatLng> listPoints;
+    RouteConnect routeConnect = new RouteConnect();
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        ((MyAdapter) recyclerView.getAdapter()).onSaveInstanceState(outState);
-    }
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        ((MyAdapter) recyclerView.getAdapter()).onSaveInstanceState(outState);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,20 +139,38 @@ public class MainActivity extends AppCompatActivity
                         .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        recyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        MyAdapter adapter = new MyAdapter(this, initData());
-        adapter.setParentClickableViewAnimationDefaultDuration();
-        adapter.setParentAndIconExpandOnClick(true);
-
-        recyclerView.setAdapter(adapter);
+//        recyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        MyAdapter adapter = new MyAdapter(this, initData());
+//        adapter.setParentClickableViewAnimationDefaultDuration();
+//        adapter.setParentAndIconExpandOnClick(true);
+//
+//        recyclerView.setAdapter(adapter);
 
         listPoints = new ArrayList<>();
     }
 
+//    public void recyclerSet(){
+//        recyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        MyAdapter adapter = new MyAdapter(this, initData());
+//        adapter.setParentClickableViewAnimationDefaultDuration();
+//        adapter.setParentAndIconExpandOnClick(true);
+//
+//        recyclerView.setAdapter(adapter);
+//    }
+
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, info_ruta.class);
+        String message = String.valueOf(routeConnect.rutas);
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+
     private List<ParentObject> initData() {
-        TitleCreator titleCreator = TitleCreator.get(this);
+        TitleCreator titleCreator = TitleCreator.get(this, routeConnect.rutas);
         List<TitleParent> titles = titleCreator.getAll();
         List<ParentObject> parentObject = new ArrayList<>();
 
@@ -251,6 +271,7 @@ public class MainActivity extends AppCompatActivity
                 if (listPoints.size() == 2){
                     listPoints.clear();
                     mMap.clear();
+                    routeConnect.rutas = 0;
                 }
 
                 listPoints.add(latLng);
@@ -258,6 +279,9 @@ public class MainActivity extends AppCompatActivity
                 markerOptions.position(latLng);
 
                 if (listPoints.size() == 1) {
+                    routeConnect.setMark1(latLng.latitude, latLng.longitude);
+                    EditText editText = findViewById(R.id.editText);
+                    editText.setText(latLng.toString());
                     markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                 } else {
                     markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
@@ -265,6 +289,9 @@ public class MainActivity extends AppCompatActivity
                 mMap.addMarker(markerOptions);
 
                 if (listPoints.size() == 2){
+                    routeConnect.getRoutes();
+                    EditText editText1 = findViewById(R.id.editText2);
+                    editText1.setText("lat:" + routeConnect.marker1Lat+" lng:"+ routeConnect.marker1Lng);
                     String url = getRequestUrl(listPoints.get(0), listPoints.get(1));
                     TaskRequestDirections taskRequestDirections = new TaskRequestDirections();
                     taskRequestDirections.execute(url);
