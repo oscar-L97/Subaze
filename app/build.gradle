@@ -31,4 +31,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
+    implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.1'
+    implementation 'com.github.chrisbanes:PhotoView:2.1.3'
 }

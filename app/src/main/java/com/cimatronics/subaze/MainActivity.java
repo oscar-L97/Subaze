@@ -43,6 +43,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -280,18 +281,15 @@ public class MainActivity extends AppCompatActivity
 
                 if (listPoints.size() == 1) {
                     routeConnect.setMark1(latLng.latitude, latLng.longitude);
-                    EditText editText = findViewById(R.id.editText);
-                    editText.setText(latLng.toString());
                     markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                 } else {
+                    routeConnect.setMark2(latLng.latitude, latLng.longitude);
                     markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                 }
                 mMap.addMarker(markerOptions);
 
                 if (listPoints.size() == 2){
                     routeConnect.getRoutes();
-                    EditText editText1 = findViewById(R.id.editText2);
-                    editText1.setText("lat:" + routeConnect.marker1Lat+" lng:"+ routeConnect.marker1Lng);
                     String url = getRequestUrl(listPoints.get(0), listPoints.get(1));
                     TaskRequestDirections taskRequestDirections = new TaskRequestDirections();
                     taskRequestDirections.execute(url);
@@ -299,6 +297,9 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+        UiSettings mapUiSettings = mMap.getUiSettings();
+        mapUiSettings.setRotateGesturesEnabled(false);
+        mapUiSettings.setTiltGesturesEnabled(false);
 
     }
 
@@ -451,7 +452,7 @@ public class MainActivity extends AppCompatActivity
             if (polylineOptions!=null){
                 mMap.addPolyline(polylineOptions);
             }else {
-                Toast.makeText(getApplicationContext(), "direccion no encontrada",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "direccion no encontrada",Toast.LENGTH_SHORT).show();
             }
         }
     }
